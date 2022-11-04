@@ -34,7 +34,7 @@ class JSONLoggingASGIMiddleware(BaseHTTPMiddleware):
 
         request_response_data = _request_config_class(request)
         response = await call_next(request)
-        request_response_data.on_request_complete(response)
+        await request_response_data.async_on_request_complete(response)
         self.request_logger.info(
             "", extra={"request_response_data": request_response_data, "type": "request"}
         )

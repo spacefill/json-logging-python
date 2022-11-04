@@ -24,6 +24,9 @@ class RequestResponseDTOBase(dict):
         """
         self._response = response
 
+    async def async_on_request_complete(self, response):
+        self.on_request_complete(response)
+
 
 class DefaultRequestResponseDTO(RequestResponseDTOBase):
     """
